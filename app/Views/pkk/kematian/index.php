@@ -54,55 +54,68 @@
         }
 
         .brand {
-            min-height: 104px;
+            min-height: 185px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 20px;
-            padding: 16px 18px;
+            justify-content: center;
+            gap: 8px;
+            padding: 22px 16px 18px;
             background: var(--sidebar-dark);
             border-bottom: 1px solid rgba(255,255,255,0.08);
+            text-align: center;
         }
 
         .brand-logo {
-            width: 58px;
-            height: 58px;
-            border-radius: 8px;
-            background: #000000;
+            width: 132px;
+            height: 120px;
+            border-radius: 0;
+            background: transparent;
+            border: none;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: visible;
             flex-shrink: 0;
+            box-shadow: none;
         }
 
         .brand-logo img {
-            width: 86px;
-            height: 86px;
+            width: 132px;
+            height: 120px;
             object-fit: contain;
             display: block;
-            max-width: none;
+            transform: scale(1.08);
         }
 
         .brand-fallback {
-            width: 58px;
-            height: 58px;
+            width: 100%;
+            height: 100%;
             display: none;
             align-items: center;
             justify-content: center;
             color: #ffffff;
-            font-size: 32px;
+            font-size: 34px;
+        }
+
+        .brand-text {
+            width: 100%;
+            line-height: 1.25;
+            margin-top: 2px;
         }
 
         .brand-title {
-            font-size: 15px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 800;
             line-height: 1.25;
+            letter-spacing: .3px;
+            color: #ffffff;
         }
 
         .brand-sub {
             font-size: 11px;
-            color: rgba(255,255,255,.65);
-            margin-top: 3px;
+            color: rgba(255,255,255,.68);
+            margin-top: 4px;
         }
 
         .profile {
@@ -411,18 +424,25 @@
             }
 
             .brand {
-                min-height: 88px;
-                gap: 18px;
+                min-height: 165px;
+                gap: 7px;
+                padding: 18px 16px 16px;
             }
 
             .brand-logo {
-                width: 52px;
-                height: 52px;
+                width: 118px;
+                height: 106px;
+                border-radius: 0;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                overflow: visible;
             }
 
             .brand-logo img {
-                width: 76px;
-                height: 76px;
+                width: 118px;
+                height: 106px;
+                transform: scale(1.05);
             }
 
             .content {
@@ -499,16 +519,15 @@
     <aside class="sidebar">
         <div class="brand">
             <div class="brand-logo">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW1UaLjSzyJHXgFrBM7F6BfRZnA0MLAz7Lsg&s"
+                <img src="/logo_pkk_transparan.png?v=3"
                      alt="Logo PKK"
-                     referrerpolicy="no-referrer"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <div class="brand-fallback">
                     <i class="bi bi-flower1"></i>
                 </div>
             </div>
 
-            <div>
+            <div class="brand-text">
                 <div class="brand-title">PKK DESA</div>
                 <div class="brand-sub">Sistem Data Wilayah</div>
             </div>

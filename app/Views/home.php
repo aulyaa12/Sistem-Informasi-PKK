@@ -49,8 +49,8 @@ main { flex:1; }
   <div class="container">
     <div class="row align-items-center">
       <div class="col-md-6 text-light">
-        <h1>Data PKK Desa <br><em>lebih rapi, siap direkap.</em></h1>
-        <p>Kelola data penduduk, kelahiran, kematian, dan lansia dalam satu sistem yang aman, mudah, dan profesional.</p>
+        <h1>Sistem Informasi Data PKK Desa<br></h1>
+        <p> <em><h5> Data PKK lebih rapi, siap direkap. </h5></em><h5>Kelola data penduduk, kelahiran, kematian, dan lansia dalam satu sistem yang aman, mudah, dan profesional.</h5></p>
         <a href="<?= base_url('register') ?>" class="btn btn-light btn-lg me-2"><i class="bi bi-person-plus"></i> Daftar Akun PKK</a>
         <a href="#fitur" class="btn btn-outline-light btn-lg"><i class="bi bi-grid-3x3-gap"></i> Lihat Fitur</a>
       </div>
@@ -64,13 +64,13 @@ main { flex:1; }
 <!-- FEATURES -->
 <section id="fitur" class="py-5">
   <div class="container">
-    <h2>Empat modul untuk satu tujuan: data desa rapi</h2>
+    <h2>Empat modul untuk satu tujuan, "<em>Kemudahan dalam mengelola data bagi PKK Desa</em>"</h2>
     <div class="row g-4">
       <div class="col-md-3">
         <div class="card h-100 card-hover">
           <div class="card-body">
             <h5>Data Penduduk</h5>
-            <p>NIK, nama lengkap, alamat, RT, pekerjaan, pendidikan, dan status pernikahan warga desa.</p>
+            <p>NIK, nama lengkap, alamat, RT, tempat tanggal lahir, usia, pekerjaan, pendidikan, hingga status pernikahan warga desa.</p>
           </div>
         </div>
       </div>
@@ -78,7 +78,7 @@ main { flex:1; }
         <div class="card h-100 card-hover">
           <div class="card-body">
             <h5>Data Kelahiran</h5>
-            <p>Catatan kelahiran bayi berdasarkan data ibu, tanggal lahir, berat badan, tenaga penolong persalinan.</p>
+            <p>Catatan kelahiran bayi berdasarkan data ibu, tanggal lahir, suia bayi.</p>
           </div>
         </div>
       </div>
@@ -94,7 +94,7 @@ main { flex:1; }
         <div class="card h-100 card-hover">
           <div class="card-body">
             <h5>Data Lansia</h5>
-            <p>Pemantauan hobi, produktivitas, dan kondisi kesehatan warga lanjut usia di seluruh RT.</p>
+            <p>Pemantauan hobi, produktivitas, dan kondisi warga lanjut usia di seluruh RT.</p>
           </div>
         </div>
       </div>

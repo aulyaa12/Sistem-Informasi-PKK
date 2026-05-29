@@ -18,7 +18,6 @@
             --border: #dfe5ec;
             --text: #1f2937;
             --muted: #6b7280;
-
             --blue: #2f9fb3;
             --green: #36a852;
             --red: #dc3f4f;
@@ -46,39 +45,35 @@
             width: 245px;
             background: var(--sidebar);
             color: #ffffff;
-            flex-shrink: 0;
             position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
+            inset: 0 auto 0 0;
             overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        .content {
+            margin-left: 245px;
+            width: calc(100% - 245px);
+            min-height: 100vh;
+        }
+
+        .main {
+            padding: 28px;
         }
 
         .brand {
             min-height: 185px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
             padding: 22px 16px 18px;
             background: var(--sidebar-dark);
             border-bottom: 1px solid rgba(255,255,255,0.08);
-            text-align: center;
+            gap: 8px;
         }
 
         .brand-logo {
             width: 132px;
             height: 120px;
-            border-radius: 0;
-            background: transparent;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: visible;
             flex-shrink: 0;
-            box-shadow: none;
         }
 
         .brand-logo img {
@@ -99,12 +94,6 @@
             font-size: 34px;
         }
 
-        .brand-text {
-            width: 100%;
-            line-height: 1.25;
-            margin-top: 2px;
-        }
-
         .brand-title {
             font-size: 16px;
             font-weight: 800;
@@ -122,9 +111,6 @@
         .profile {
             padding: 18px;
             border-bottom: 1px solid rgba(255,255,255,0.08);
-            display: flex;
-            align-items: center;
-            gap: 11px;
         }
 
         .profile-avatar {
@@ -132,9 +118,6 @@
             height: 42px;
             border-radius: 50%;
             background: #3b82f6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             font-size: 20px;
             flex-shrink: 0;
         }
@@ -145,8 +128,6 @@
         }
 
         .profile-role {
-            display: inline-block;
-            margin-top: 4px;
             background: #22c55e;
             color: #ffffff;
             font-size: 10px;
@@ -166,38 +147,25 @@
             padding: 0 10px 18px;
         }
 
-        .menu a {
+        .menu-link {
             color: rgba(255,255,255,.78);
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
             padding: 11px 12px;
             border-radius: 6px;
             font-size: 13px;
             transition: .15s ease;
         }
 
-        .menu a:hover,
-        .menu a.active {
+        .menu-link:hover,
+        .menu-link.active {
             background: rgba(255,255,255,.10);
             color: #ffffff;
         }
 
-        .menu i {
+        .menu-link i {
             width: 18px;
             text-align: center;
             font-size: 15px;
-        }
-
-        .content {
-            margin-left: 245px;
-            width: calc(100% - 245px);
-            min-height: 100vh;
-        }
-
-        .main {
-            padding: 28px;
         }
 
         .page-title {
@@ -211,10 +179,12 @@
             color: #0f172a;
         }
 
-        .page-title p {
-            margin: 0;
+        .page-title p,
+        .panel-subtitle,
+        .summary-label,
+        .summary-desc,
+        .footer {
             color: var(--muted);
-            font-size: 14px;
         }
 
         .section-title {
@@ -222,13 +192,6 @@
             font-size: 17px;
             font-weight: 700;
             color: var(--text);
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-bottom: 16px;
         }
 
         .module-card {
@@ -292,10 +255,6 @@
             height: 38px;
             background: rgba(0,0,0,.14);
             color: rgba(255,255,255,.95);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
             font-size: 12px;
             font-weight: 700;
             text-decoration: none;
@@ -307,23 +266,18 @@
             background: rgba(0,0,0,.24);
         }
 
-        .export-panel {
+        .export-panel,
+        .summary-card,
+        .panel {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 6px;
-            padding: 18px 20px;
-            margin: 0 0 26px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 18px;
             box-shadow: 0 1px 3px rgba(0,0,0,.05);
         }
 
-        .export-panel-left {
-            display: flex;
-            align-items: center;
-            gap: 14px;
+        .export-panel {
+            padding: 18px 20px;
+            margin-bottom: 26px;
         }
 
         .export-icon {
@@ -333,9 +287,6 @@
             background: #ecfdf5;
             border: 1px solid #bbf7d0;
             color: #047857;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             font-size: 22px;
             flex-shrink: 0;
         }
@@ -362,9 +313,6 @@
             font-weight: 700;
             padding: 10px 15px;
             text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
             white-space: nowrap;
         }
 
@@ -374,23 +322,12 @@
             border-color: #065f46;
         }
 
-        .summary-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-bottom: 26px;
-        }
-
-        .summary-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 6px;
+        .summary-card,
+        .panel {
             padding: 16px;
-            box-shadow: 0 1px 3px rgba(0,0,0,.05);
         }
 
         .summary-label {
-            color: var(--muted);
             font-size: 12px;
             margin-bottom: 8px;
         }
@@ -402,32 +339,9 @@
         }
 
         .summary-desc {
-            color: var(--muted);
             font-size: 12px;
             margin-top: 10px;
             line-height: 1.5;
-        }
-
-        .chart-grid-top {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-
-        .chart-grid-bottom {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .panel {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            padding: 16px;
-            box-shadow: 0 1px 3px rgba(0,0,0,.05);
         }
 
         .panel-title {
@@ -437,7 +351,6 @@
         }
 
         .panel-subtitle {
-            color: var(--muted);
             font-size: 12px;
             margin-bottom: 14px;
         }
@@ -449,17 +362,8 @@
 
         .footer {
             text-align: center;
-            color: var(--muted);
             font-size: 12px;
             padding: 20px;
-        }
-
-        @media (max-width: 1180px) {
-            .cards-grid,
-            .summary-grid,
-            .chart-grid-top {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
 
         @media (max-width: 780px) {
@@ -473,28 +377,6 @@
                 height: auto;
             }
 
-            .brand {
-                min-height: 165px;
-                gap: 7px;
-                padding: 18px 16px 16px;
-            }
-
-            .brand-logo {
-                width: 118px;
-                height: 106px;
-                border-radius: 0;
-                background: transparent;
-                border: none;
-                box-shadow: none;
-                overflow: visible;
-            }
-
-            .brand-logo img {
-                width: 118px;
-                height: 106px;
-                transform: scale(1.05);
-            }
-
             .content {
                 margin-left: 0;
                 width: 100%;
@@ -504,35 +386,27 @@
                 padding: 16px;
             }
 
+            .brand {
+                min-height: 165px;
+                padding: 18px 16px 16px;
+                gap: 7px;
+            }
+
+            .brand-logo,
+            .brand-logo img {
+                width: 118px;
+                height: 106px;
+            }
+
+            .brand-logo img {
+                transform: scale(1.05);
+            }
+
             .page-title h1 {
                 font-size: 22px;
             }
 
-            .cards-grid,
-            .summary-grid,
-            .chart-grid-top,
-            .chart-grid-bottom {
-                grid-template-columns: 1fr;
-            }
-
-            .export-panel {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .export-panel-left {
-                align-items: flex-start;
-            }
-
-            .btn-export-all {
-                width: 100%;
-                justify-content: center;
-            }
-
-            .profile {
-                display: none;
-            }
-
+            .profile,
             .menu-label {
                 display: none;
             }
@@ -545,9 +419,18 @@
                 border-top: 1px solid rgba(255,255,255,0.08);
             }
 
-            .menu a {
+            .menu-link {
                 white-space: nowrap;
                 flex-shrink: 0;
+            }
+
+            .export-panel {
+                align-items: stretch !important;
+            }
+
+            .btn-export-all {
+                width: 100%;
+                justify-content: center;
             }
 
             .chart-box {
@@ -559,11 +442,75 @@
 
 <body>
 
+<?php
+    $menus = [
+        ['url' => 'pkk/dashboard', 'icon' => 'bi-speedometer2', 'label' => 'Dashboard', 'active' => true],
+        ['url' => 'pkk/penduduk', 'icon' => 'bi-people-fill', 'label' => 'Data Penduduk', 'active' => false],
+        ['url' => 'pkk/kelahiran', 'icon' => 'bi-person-plus-fill', 'label' => 'Data Kelahiran', 'active' => false],
+        ['url' => 'pkk/kematian', 'icon' => 'bi-file-earmark-medical-fill', 'label' => 'Data Kematian', 'active' => false],
+        ['url' => 'pkk/lansia', 'icon' => 'bi-person-standing', 'label' => 'Data Lansia', 'active' => false],
+    ];
+
+    $modules = [
+        [
+            'class' => 'blue',
+            'title' => 'Penduduk',
+            'desc' => 'Pengelolaan data dasar penduduk desa.',
+            'icon' => 'bi-people-fill',
+            'url' => 'pkk/penduduk',
+        ],
+        [
+            'class' => 'green',
+            'title' => 'Kelahiran',
+            'desc' => 'Pencatatan data kelahiran warga desa.',
+            'icon' => 'bi-person-plus-fill',
+            'url' => 'pkk/kelahiran',
+        ],
+        [
+            'class' => 'red',
+            'title' => 'Kematian',
+            'desc' => 'Pencatatan data kematian warga desa.',
+            'icon' => 'bi-file-earmark-medical-fill',
+            'url' => 'pkk/kematian',
+        ],
+        [
+            'class' => 'purple',
+            'title' => 'Lansia',
+            'desc' => 'Pemantauan data dan kondisi warga lansia.',
+            'icon' => 'bi-person-standing',
+            'url' => 'pkk/lansia',
+        ],
+    ];
+
+    $summaries = [
+        [
+            'label' => 'Penduduk Laki-laki',
+            'value' => $total_laki_laki ?? 0,
+            'desc' => 'Jumlah warga laki-laki yang tercatat.',
+        ],
+        [
+            'label' => 'Penduduk Perempuan',
+            'value' => $total_perempuan ?? 0,
+            'desc' => 'Jumlah warga perempuan yang tercatat.',
+        ],
+        [
+            'label' => 'Lansia Produktif',
+            'value' => $total_lansia_produktif ?? 0,
+            'desc' => 'Lansia dengan status produktif.',
+        ],
+        [
+            'label' => 'Lansia Nonproduktif',
+            'value' => $total_lansia_nonproduktif ?? 0,
+            'desc' => 'Lansia dengan status nonproduktif.',
+        ],
+    ];
+?>
+
 <div class="layout">
 
     <aside class="sidebar">
-        <div class="brand">
-            <div class="brand-logo">
+        <div class="brand d-flex flex-column align-items-center justify-content-center text-center">
+            <div class="brand-logo d-flex align-items-center justify-content-center">
                 <img src="/logo_pkk_transparan.png?v=3"
                      alt="Logo PKK"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
@@ -572,55 +519,39 @@
                 </div>
             </div>
 
-            <div class="brand-text">
+            <div class="w-100">
                 <div class="brand-title">PKK DESA</div>
                 <div class="brand-sub">Sistem Data Wilayah</div>
             </div>
         </div>
 
-        <div class="profile">
-            <div class="profile-avatar">
+        <div class="profile d-flex align-items-center gap-2">
+            <div class="profile-avatar d-flex align-items-center justify-content-center">
                 <i class="bi bi-person-fill"></i>
             </div>
+
             <div>
                 <div class="profile-name"><?= esc(session()->get('username') ?? 'Ketua PKK'); ?></div>
-                <span class="profile-role">Ketua PKK</span>
+                <span class="profile-role d-inline-block">Ketua PKK</span>
             </div>
         </div>
 
         <div class="menu-label">Menu Utama</div>
 
         <nav class="menu">
-            <a href="<?= base_url('pkk/dashboard'); ?>" class="active">
-                <i class="bi bi-speedometer2"></i>
-                Dashboard
-            </a>
-
-            <a href="<?= base_url('pkk/penduduk'); ?>">
-                <i class="bi bi-people-fill"></i>
-                Data Penduduk
-            </a>
-
-            <a href="<?= base_url('pkk/kelahiran'); ?>">
-                <i class="bi bi-person-plus-fill"></i>
-                Data Kelahiran
-            </a>
-
-            <a href="<?= base_url('pkk/kematian'); ?>">
-                <i class="bi bi-file-earmark-medical-fill"></i>
-                Data Kematian
-            </a>
-
-            <a href="<?= base_url('pkk/lansia'); ?>">
-                <i class="bi bi-person-standing"></i>
-                Data Lansia
-            </a>
+            <?php foreach ($menus as $menu) : ?>
+                <a href="<?= base_url($menu['url']); ?>"
+                   class="menu-link d-flex align-items-center gap-2 <?= $menu['active'] ? 'active' : ''; ?>">
+                    <i class="bi <?= esc($menu['icon']); ?>"></i>
+                    <?= esc($menu['label']); ?>
+                </a>
+            <?php endforeach; ?>
         </nav>
 
         <div class="menu-label">Akun</div>
 
         <nav class="menu">
-            <a href="<?= base_url('logout'); ?>">
+            <a href="<?= base_url('logout'); ?>" class="menu-link d-flex align-items-center gap-2">
                 <i class="bi bi-box-arrow-right"></i>
                 Logout
             </a>
@@ -630,13 +561,13 @@
     <div class="content">
         <main class="main">
 
-            <?php if (session()->getFlashdata('success')): ?>
+            <?php if (session()->getFlashdata('success')) : ?>
                 <div class="alert alert-success">
                     <?= session()->getFlashdata('success'); ?>
                 </div>
             <?php endif; ?>
 
-            <?php if (session()->getFlashdata('error')): ?>
+            <?php if (session()->getFlashdata('error')) : ?>
                 <div class="alert alert-danger">
                     <?= session()->getFlashdata('error'); ?>
                 </div>
@@ -649,55 +580,28 @@
 
             <div class="section-title">Menu Modul</div>
 
-            <div class="cards-grid">
-                <div class="module-card blue">
-                    <div class="module-main">
-                        <div class="module-title">Penduduk</div>
-                        <p class="module-desc">Pengelolaan data dasar penduduk desa.</p>
-                    </div>
-                    <i class="bi bi-people-fill module-icon-bg"></i>
-                    <a href="<?= base_url('pkk/penduduk'); ?>" class="module-footer">
-                        Selengkapnya <i class="bi bi-arrow-circle-right"></i>
-                    </a>
-                </div>
+            <div class="row g-3 mb-3">
+                <?php foreach ($modules as $module) : ?>
+                    <div class="col-12 col-md-6 col-xl-3">
+                        <div class="module-card <?= esc($module['class']); ?>">
+                            <div class="module-main">
+                                <div class="module-title"><?= esc($module['title']); ?></div>
+                                <p class="module-desc"><?= esc($module['desc']); ?></p>
+                            </div>
 
-                <div class="module-card green">
-                    <div class="module-main">
-                        <div class="module-title">Kelahiran</div>
-                        <p class="module-desc">Pencatatan data kelahiran warga desa.</p>
-                    </div>
-                    <i class="bi bi-person-plus-fill module-icon-bg"></i>
-                    <a href="<?= base_url('pkk/kelahiran'); ?>" class="module-footer">
-                        Selengkapnya <i class="bi bi-arrow-circle-right"></i>
-                    </a>
-                </div>
+                            <i class="bi <?= esc($module['icon']); ?> module-icon-bg"></i>
 
-                <div class="module-card red">
-                    <div class="module-main">
-                        <div class="module-title">Kematian</div>
-                        <p class="module-desc">Pencatatan data kematian warga desa.</p>
+                            <a href="<?= base_url($module['url']); ?>" class="module-footer d-flex align-items-center justify-content-center gap-1">
+                                Selengkapnya <i class="bi bi-arrow-circle-right"></i>
+                            </a>
+                        </div>
                     </div>
-                    <i class="bi bi-file-earmark-medical-fill module-icon-bg"></i>
-                    <a href="<?= base_url('pkk/kematian'); ?>" class="module-footer">
-                        Selengkapnya <i class="bi bi-arrow-circle-right"></i>
-                    </a>
-                </div>
-
-                <div class="module-card purple">
-                    <div class="module-main">
-                        <div class="module-title">Lansia</div>
-                        <p class="module-desc">Pemantauan data dan kondisi warga lansia.</p>
-                    </div>
-                    <i class="bi bi-person-standing module-icon-bg"></i>
-                    <a href="<?= base_url('pkk/lansia'); ?>" class="module-footer">
-                        Selengkapnya <i class="bi bi-arrow-circle-right"></i>
-                    </a>
-                </div>
+                <?php endforeach; ?>
             </div>
 
-            <div class="export-panel">
-                <div class="export-panel-left">
-                    <div class="export-icon">
+            <div class="export-panel d-flex align-items-center justify-content-between gap-3 flex-column flex-md-row">
+                <div class="d-flex align-items-center gap-3">
+                    <div class="export-icon d-flex align-items-center justify-content-center">
                         <i class="bi bi-file-earmark-excel"></i>
                     </div>
 
@@ -709,7 +613,7 @@
                     </div>
                 </div>
 
-                <a href="<?= base_url('pkk/export-all'); ?>" class="btn-export-all">
+                <a href="<?= base_url('pkk/export-all'); ?>" class="btn-export-all d-inline-flex align-items-center gap-2">
                     <i class="bi bi-download"></i>
                     Unduh Semua Data
                 </a>
@@ -717,74 +621,70 @@
 
             <div class="section-title">Ringkasan Statistik</div>
 
-            <div class="summary-grid">
-                <div class="summary-card">
-                    <div class="summary-label">Penduduk Laki-laki</div>
-                    <div class="summary-value"><?= esc($total_laki_laki ?? 0); ?></div>
-                    <div class="summary-desc">Jumlah warga laki-laki yang tercatat.</div>
-                </div>
-
-                <div class="summary-card">
-                    <div class="summary-label">Penduduk Perempuan</div>
-                    <div class="summary-value"><?= esc($total_perempuan ?? 0); ?></div>
-                    <div class="summary-desc">Jumlah warga perempuan yang tercatat.</div>
-                </div>
-
-                <div class="summary-card">
-                    <div class="summary-label">Lansia Produktif</div>
-                    <div class="summary-value"><?= esc($total_lansia_produktif ?? 0); ?></div>
-                    <div class="summary-desc">Lansia dengan status produktif.</div>
-                </div>
-
-                <div class="summary-card">
-                    <div class="summary-label">Lansia Nonproduktif</div>
-                    <div class="summary-value"><?= esc($total_lansia_nonproduktif ?? 0); ?></div>
-                    <div class="summary-desc">Lansia dengan status nonproduktif.</div>
-                </div>
+            <div class="row g-3 mb-4">
+                <?php foreach ($summaries as $summary) : ?>
+                    <div class="col-12 col-md-6 col-xl-3">
+                        <div class="summary-card h-100">
+                            <div class="summary-label"><?= esc($summary['label']); ?></div>
+                            <div class="summary-value"><?= esc($summary['value']); ?></div>
+                            <div class="summary-desc"><?= esc($summary['desc']); ?></div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
 
             <div class="section-title">Visualisasi Statistik</div>
 
-            <div class="chart-grid-top">
-                <div class="panel">
-                    <div class="panel-title">Jenis Kelamin Penduduk</div>
-                    <div class="panel-subtitle">Perbandingan laki-laki dan perempuan.</div>
-                    <div class="chart-box">
-                        <canvas id="genderChart"></canvas>
+            <div class="row g-3 mb-3">
+                <div class="col-12 col-lg-4">
+                    <div class="panel h-100">
+                        <div class="panel-title">Jenis Kelamin Penduduk</div>
+                        <div class="panel-subtitle">Perbandingan laki-laki dan perempuan.</div>
+                        <div class="chart-box">
+                            <canvas id="genderChart"></canvas>
+                        </div>
                     </div>
                 </div>
 
-                <div class="panel">
-                    <div class="panel-title">Jenis Kelamin Kelahiran</div>
-                    <div class="panel-subtitle">Distribusi bayi laki-laki dan perempuan.</div>
-                    <div class="chart-box">
-                        <canvas id="kelahiranChart"></canvas>
+                <div class="col-12 col-lg-4">
+                    <div class="panel h-100">
+                        <div class="panel-title">Jenis Kelamin Kelahiran</div>
+                        <div class="panel-subtitle">Distribusi bayi laki-laki dan perempuan.</div>
+                        <div class="chart-box">
+                            <canvas id="kelahiranChart"></canvas>
+                        </div>
                     </div>
                 </div>
 
-                <div class="panel">
-                    <div class="panel-title">Produktivitas Lansia</div>
-                    <div class="panel-subtitle">Produktif dan nonproduktif.</div>
-                    <div class="chart-box">
-                        <canvas id="lansiaChart"></canvas>
+                <div class="col-12 col-lg-4">
+                    <div class="panel h-100">
+                        <div class="panel-title">Produktivitas Lansia</div>
+                        <div class="panel-subtitle">Produktif dan nonproduktif.</div>
+                        <div class="chart-box">
+                            <canvas id="lansiaChart"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="chart-grid-bottom">
-                <div class="panel">
-                    <div class="panel-title">Penduduk per RT</div>
-                    <div class="panel-subtitle">Sebaran jumlah warga di setiap RT.</div>
-                    <div class="chart-box">
-                        <canvas id="rtChart"></canvas>
+            <div class="row g-3">
+                <div class="col-12 col-xl-6">
+                    <div class="panel h-100">
+                        <div class="panel-title">Penduduk per RT</div>
+                        <div class="panel-subtitle">Sebaran jumlah warga di setiap RT.</div>
+                        <div class="chart-box">
+                            <canvas id="rtChart"></canvas>
+                        </div>
                     </div>
                 </div>
 
-                <div class="panel">
-                    <div class="panel-title">Tingkat Pendidikan</div>
-                    <div class="panel-subtitle">Komposisi pendidikan warga desa.</div>
-                    <div class="chart-box">
-                        <canvas id="pendidikanChart"></canvas>
+                <div class="col-12 col-xl-6">
+                    <div class="panel h-100">
+                        <div class="panel-title">Tingkat Pendidikan</div>
+                        <div class="panel-subtitle">Komposisi pendidikan warga desa.</div>
+                        <div class="chart-box">
+                            <canvas id="pendidikanChart"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -824,30 +724,131 @@ const D = {
     }
 };
 
+const formatNumber = value => new Intl.NumberFormat('id-ID').format(Number(value) || 0);
+
+const totalData = data => {
+    return Array.isArray(data)
+        ? data.reduce((sum, value) => sum + (Number(value) || 0), 0)
+        : 0;
+};
+
 const hasData = data => Array.isArray(data) && data.some(value => Number(value) > 0);
 
-const EMPTY_PLUGIN = {
-    id: 'emptyState',
+const percentText = (value, total) => {
+    if (!total) {
+        return '0%';
+    }
+
+    return ((Number(value) / total) * 100).toFixed(1).replace('.', ',') + '%';
+};
+
+const suggestedMax = data => {
+    if (!Array.isArray(data) || data.length === 0) {
+        return 5;
+    }
+
+    const max = Math.max(...data.map(value => Number(value) || 0));
+    return max <= 0 ? 5 : Math.ceil(max + (max * 0.25));
+};
+
+const CHART_NUMBER_PLUGIN = {
+    id: 'chartNumberPlugin',
+
     afterDraw(chart) {
-        const data = chart.data.datasets[0]?.data || [];
+        const dataset = chart.data.datasets[0];
+        const data = dataset?.data || [];
+        const { ctx, chartArea } = chart;
+        const centerX = (chartArea.left + chartArea.right) / 2;
+        const centerY = (chartArea.top + chartArea.bottom) / 2;
 
         if (!hasData(data)) {
-            const { ctx, width, height } = chart;
-
             ctx.save();
             ctx.textAlign = 'center';
             ctx.textBaseline = 'middle';
             ctx.fillStyle = '#94a3b8';
             ctx.font = '600 13px Arial';
-            ctx.fillText('Belum ada data', width / 2, height / 2);
+            ctx.fillText('Belum ada data', centerX, centerY);
+            ctx.restore();
+            return;
+        }
+
+        if (chart.config.type === 'doughnut') {
+            const total = totalData(data);
+
+            ctx.save();
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = '#64748b';
+            ctx.font = '700 12px Arial';
+            ctx.fillText('Total', centerX, centerY - 10);
+
+            ctx.fillStyle = '#0f172a';
+            ctx.font = '800 20px Arial';
+            ctx.fillText(formatNumber(total), centerX, centerY + 12);
+            ctx.restore();
+        }
+    },
+
+    afterDatasetsDraw(chart) {
+        const dataset = chart.data.datasets[0];
+        const data = dataset?.data || [];
+
+        if (!hasData(data)) {
+            return;
+        }
+
+        const { ctx } = chart;
+        const meta = chart.getDatasetMeta(0);
+
+        if (chart.config.type === 'bar') {
+            ctx.save();
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'bottom';
+            ctx.fillStyle = '#0f172a';
+            ctx.font = '700 11px Arial';
+
+            meta.data.forEach((bar, index) => {
+                const value = Number(data[index]) || 0;
+
+                if (value > 0) {
+                    ctx.fillText(formatNumber(value), bar.x, bar.y - 6);
+                }
+            });
+
+            ctx.restore();
+        }
+
+        if (chart.config.type === 'doughnut') {
+            ctx.save();
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.font = '800 12px Arial';
+            ctx.lineWidth = 3;
+            ctx.strokeStyle = 'rgba(15, 23, 42, 0.45)';
+            ctx.fillStyle = '#ffffff';
+
+            meta.data.forEach((arc, index) => {
+                const value = Number(data[index]) || 0;
+
+                if (value > 0) {
+                    const position = arc.tooltipPosition();
+                    const label = formatNumber(value);
+
+                    ctx.strokeText(label, position.x, position.y);
+                    ctx.fillText(label, position.x, position.y);
+                }
+            });
+
             ctx.restore();
         }
     }
 };
 
-Chart.register(EMPTY_PLUGIN);
+Chart.register(CHART_NUMBER_PLUGIN);
 
 function donut(id, dataset, colors) {
+    const total = totalData(dataset.data);
+
     new Chart(document.getElementById(id), {
         type: 'doughnut',
         data: {
@@ -872,16 +873,38 @@ function donut(id, dataset, colors) {
                         pointStyle: 'circle',
                         boxWidth: 8,
                         padding: 14,
+                        color: '#64748b',
                         font: {
                             size: 11,
                             weight: 'bold'
                         },
-                        color: '#64748b'
+                        generateLabels(chart) {
+                            const labels = chart.data.labels || [];
+                            const data = chart.data.datasets[0].data || [];
+                            const backgroundColor = chart.data.datasets[0].backgroundColor || [];
+
+                            return labels.map((label, index) => {
+                                const value = Number(data[index]) || 0;
+
+                                return {
+                                    text: label + ': ' + formatNumber(value) + ' (' + percentText(value, total) + ')',
+                                    fillStyle: backgroundColor[index],
+                                    strokeStyle: backgroundColor[index],
+                                    lineWidth: 0,
+                                    hidden: !chart.getDataVisibility(index),
+                                    index: index,
+                                    pointStyle: 'circle'
+                                };
+                            });
+                        }
                     }
                 },
                 tooltip: {
                     callbacks: {
-                        label: ctx => ' ' + ctx.label + ': ' + ctx.raw
+                        label(ctx) {
+                            const value = Number(ctx.raw) || 0;
+                            return ' ' + ctx.label + ': ' + formatNumber(value) + ' (' + percentText(value, total) + ')';
+                        }
                     }
                 }
             }
@@ -907,13 +930,20 @@ function bar(id, dataset, color, bgColor) {
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            layout: {
+                padding: {
+                    top: 22
+                }
+            },
             plugins: {
                 legend: {
                     display: false
                 },
                 tooltip: {
                     callbacks: {
-                        label: ctx => ' ' + ctx.raw + ' warga'
+                        label(ctx) {
+                            return ' ' + formatNumber(ctx.raw) + ' warga';
+                        }
                     }
                 }
             },
@@ -934,6 +964,7 @@ function bar(id, dataset, color, bgColor) {
                 },
                 y: {
                     beginAtZero: true,
+                    suggestedMax: suggestedMax(dataset.data),
                     border: {
                         display: false
                     },

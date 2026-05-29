@@ -17,10 +17,11 @@
             --border: #dfe5ec;
             --text: #111827;
             --muted: #6b7280;
-
             --blue: #2f9fb3;
-            --green: #36a852;
-            --red: #dc3f4f;
+            --blue-dark: #278b9d;
+            --green: #047857;
+            --green-soft: #ecfdf5;
+            --red: #dc2626;
             --orange: #d97706;
         }
 
@@ -34,6 +35,10 @@
             color: var(--text);
             font-family: Arial, Helvetica, sans-serif;
             font-size: 14px;
+        }
+
+        a {
+            text-decoration: none;
         }
 
         .layout {
@@ -51,63 +56,78 @@
             bottom: 0;
             left: 0;
             overflow-y: auto;
+            z-index: 1000;
         }
 
+        /* Logo dibuat sama seperti tampilan dashboard */
         .brand {
-            min-height: 104px;
+            min-height: 185px;
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 20px;
-            padding: 16px 18px;
+            justify-content: center;
+            gap: 8px;
+            padding: 22px 16px 18px;
             background: var(--sidebar-dark);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            text-align: center;
         }
 
         .brand-logo {
-            width: 58px;
-            height: 58px;
-            border-radius: 8px;
-            background: #000000;
+            width: 132px;
+            height: 120px;
+            border-radius: 0;
+            background: transparent;
+            border: none;
             display: flex;
             align-items: center;
             justify-content: center;
             overflow: visible;
             flex-shrink: 0;
+            box-shadow: none;
         }
 
         .brand-logo img {
-            width: 86px;
-            height: 86px;
+            width: 132px;
+            height: 120px;
             object-fit: contain;
             display: block;
-            max-width: none;
+            transform: scale(1.08);
         }
 
         .brand-fallback {
-            width: 58px;
-            height: 58px;
+            width: 100%;
+            height: 100%;
             display: none;
             align-items: center;
             justify-content: center;
             color: #ffffff;
-            font-size: 32px;
+            font-size: 34px;
+        }
+
+        .brand-text {
+            width: 100%;
+            line-height: 1.25;
+            margin-top: 2px;
         }
 
         .brand-title {
-            font-size: 15px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 800;
             line-height: 1.25;
+            letter-spacing: .3px;
+            color: #ffffff;
         }
 
         .brand-sub {
             font-size: 11px;
-            color: rgba(255,255,255,.65);
-            margin-top: 3px;
+            color: rgba(255, 255, 255, .68);
+            margin-top: 4px;
         }
 
         .profile {
             padding: 18px;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             display: flex;
             align-items: center;
             gap: 11px;
@@ -143,7 +163,7 @@
         .menu-label {
             padding: 18px 18px 8px;
             font-size: 11px;
-            color: rgba(255,255,255,.45);
+            color: rgba(255, 255, 255, .45);
             text-transform: uppercase;
             letter-spacing: .6px;
         }
@@ -153,8 +173,7 @@
         }
 
         .menu a {
-            color: rgba(255,255,255,.78);
-            text-decoration: none;
+            color: rgba(255, 255, 255, .78);
             display: flex;
             align-items: center;
             gap: 10px;
@@ -166,7 +185,7 @@
 
         .menu a:hover,
         .menu a.active {
-            background: rgba(255,255,255,.10);
+            background: rgba(255, 255, 255, .10);
             color: #ffffff;
         }
 
@@ -220,9 +239,9 @@
             font-size: 13px;
             font-weight: 700;
             padding: 9px 14px;
-            text-decoration: none;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 7px;
         }
 
@@ -233,29 +252,34 @@
         }
 
         .btn-main:hover {
-            background: #278b9d;
+            background: var(--blue-dark);
+            border-color: var(--blue-dark);
             color: #ffffff;
         }
 
         .btn-export {
-            background: #ecfdf5;
+            background: var(--green-soft);
             border: 1px solid #bbf7d0;
-            color: #047857;
+            color: var(--green);
         }
 
         .btn-export:hover {
-            background: #047857;
+            background: var(--green);
+            border-color: var(--green);
             color: #ffffff;
-            border-color: #047857;
         }
 
-        .filter-card {
+        .filter-card,
+        .table-card {
             background: var(--surface);
             border: 1px solid var(--border);
             border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .05);
+        }
+
+        .filter-card {
             padding: 16px;
             margin-bottom: 18px;
-            box-shadow: 0 1px 3px rgba(0,0,0,.05);
         }
 
         .filter-card label {
@@ -296,6 +320,7 @@
 
         .btn-filter:hover {
             background: #111827;
+            color: #ffffff;
         }
 
         .btn-reset {
@@ -306,9 +331,9 @@
             font-size: 13px;
             font-weight: 700;
             padding: 10px 14px;
-            text-decoration: none;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
         }
 
         .btn-reset:hover {
@@ -317,11 +342,7 @@
         }
 
         .table-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 6px;
             overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,.05);
         }
 
         .table {
@@ -381,11 +402,6 @@
             white-space: nowrap;
             min-width: 64px;
             color: #000000;
-        }
-
-        .badge-laki,
-        .badge-perempuan,
-        .rt-badge {
             background: #f8fafc;
             border: 1px solid #dfe5ec;
         }
@@ -405,16 +421,10 @@
             border-radius: 6px;
             font-size: 13px;
             font-weight: 700;
-            text-decoration: none;
             border: 1px solid transparent;
             display: inline-flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .action-btn i {
-            margin: 0;
-            line-height: 1;
         }
 
         .action-detail {
@@ -430,23 +440,23 @@
 
         .action-edit {
             background: #fffbeb;
-            color: #d97706;
+            color: var(--orange);
             border-color: #fde68a;
         }
 
         .action-edit:hover {
-            background: #d97706;
+            background: var(--orange);
             color: #ffffff;
         }
 
         .action-delete {
             background: #fff1f2;
-            color: #dc2626;
+            color: var(--red);
             border-color: #fecdd3;
         }
 
         .action-delete:hover {
-            background: #dc2626;
+            background: var(--red);
             color: #ffffff;
         }
 
@@ -476,6 +486,10 @@
             justify-content: flex-end;
         }
 
+        .table-footer .pagination {
+            margin: 0;
+        }
+
         .footer {
             text-align: center;
             color: var(--muted);
@@ -501,18 +515,25 @@
             }
 
             .brand {
-                min-height: 88px;
-                gap: 18px;
+                min-height: 165px;
+                gap: 7px;
+                padding: 18px 16px 16px;
             }
 
             .brand-logo {
-                width: 52px;
-                height: 52px;
+                width: 118px;
+                height: 106px;
+                border-radius: 0;
+                background: transparent;
+                border: none;
+                box-shadow: none;
+                overflow: visible;
             }
 
             .brand-logo img {
-                width: 76px;
-                height: 76px;
+                width: 118px;
+                height: 106px;
+                transform: scale(1.05);
             }
 
             .content {
@@ -535,7 +556,6 @@
             .btn-main,
             .btn-export {
                 flex: 1;
-                justify-content: center;
             }
 
             .profile {
@@ -551,7 +571,7 @@
                 gap: 8px;
                 overflow-x: auto;
                 padding: 10px;
-                border-top: 1px solid rgba(255,255,255,0.08);
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
             }
 
             .menu a {
@@ -563,10 +583,7 @@
                 font-size: 14px;
             }
 
-            .table thead th {
-                font-size: 12px;
-            }
-
+            .table thead th,
             .table tbody td {
                 font-size: 14px;
             }
@@ -581,22 +598,19 @@
 </head>
 
 <body>
-
 <div class="layout">
-
     <aside class="sidebar">
         <div class="brand">
             <div class="brand-logo">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW1UaLjSzyJHXgFrBM7F6BfRZnA0MLAz7Lsg&s"
+                <img src="/logo_pkk_transparan.png?v=3"
                      alt="Logo PKK"
-                     referrerpolicy="no-referrer"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                 <div class="brand-fallback">
                     <i class="bi bi-flower1"></i>
                 </div>
             </div>
 
-            <div>
+            <div class="brand-text">
                 <div class="brand-title">PKK DESA</div>
                 <div class="brand-sub">Sistem Data Wilayah</div>
             </div>
@@ -653,16 +667,17 @@
 
     <div class="content">
         <main class="main">
-
             <?php if (session()->getFlashdata('success')) : ?>
-                <div class="alert alert-success">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <?= session()->getFlashdata('success'); ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             <?php endif; ?>
 
             <?php if (session()->getFlashdata('error')) : ?>
-                <div class="alert alert-danger">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <?= session()->getFlashdata('error'); ?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             <?php endif; ?>
 
@@ -689,8 +704,9 @@
                 <form action="<?= base_url('pkk/penduduk'); ?>" method="get">
                     <div class="row g-2 align-items-end">
                         <div class="col-12 col-md-4">
-                            <label>Kata Kunci</label>
+                            <label for="keyword" class="form-label">Kata Kunci</label>
                             <input type="text"
+                                   id="keyword"
                                    name="keyword"
                                    class="form-control"
                                    placeholder="Cari nama, NIK, atau No. KK"
@@ -698,8 +714,8 @@
                         </div>
 
                         <div class="col-6 col-md-2">
-                            <label>RT</label>
-                            <select name="rt" class="form-select">
+                            <label for="rt" class="form-label">RT</label>
+                            <select id="rt" name="rt" class="form-select">
                                 <option value="">Semua RT</option>
                                 <?php for ($i = 1; $i <= 16; $i++) : ?>
                                     <option value="<?= $i; ?>" <?= (($rt_terpilih ?? '') == $i) ? 'selected' : ''; ?>>
@@ -710,8 +726,8 @@
                         </div>
 
                         <div class="col-6 col-md-3">
-                            <label>Jenis Kelamin</label>
-                            <select name="jenis_kelamin" class="form-select">
+                            <label for="jenis_kelamin" class="form-label">Jenis Kelamin</label>
+                            <select id="jenis_kelamin" name="jenis_kelamin" class="form-select">
                                 <option value="">Semua</option>
                                 <option value="L" <?= (($jk_terpilih ?? '') == 'L') ? 'selected' : ''; ?>>Laki-laki</option>
                                 <option value="P" <?= (($jk_terpilih ?? '') == 'P') ? 'selected' : ''; ?>>Perempuan</option>
@@ -774,7 +790,7 @@
                                                 $tgl = new DateTime($row['tgl_lahir']);
                                                 $today = new DateTime('today');
                                                 $umur = $today->diff($tgl)->y;
-                                            } catch (\Throwable $e) {
+                                            } catch (Throwable $e) {
                                                 $umur = '-';
                                             }
                                         }
@@ -843,17 +859,14 @@
                     </div>
                 <?php endif; ?>
             </div>
-
         </main>
 
         <footer class="footer">
             &copy; <?= date('Y'); ?> Sistem PKK Desa. Data ditampilkan sesuai wilayah akun yang sedang login.
         </footer>
     </div>
-
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
 </html>
