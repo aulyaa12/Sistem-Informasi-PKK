@@ -41,7 +41,10 @@
             margin: 0;
             display: flex;
             flex-direction: column;
-            background: var(--bg);
+            background:
+                radial-gradient(circle at 10% 15%, rgba(47, 159, 179, .08), transparent 28%),
+                radial-gradient(circle at 90% 55%, rgba(118, 85, 199, .07), transparent 30%),
+                var(--bg);
             color: var(--text);
             font-family: Arial, Helvetica, sans-serif;
             font-size: 15px;
@@ -49,6 +52,7 @@
 
         main {
             flex: 1;
+            overflow: hidden;
         }
 
         a {
@@ -56,8 +60,14 @@
         }
 
         .navbar {
-            background: #ffffff;
+            background: rgba(255, 255, 255, .94);
             border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar .container {
+            padding-top: 6px;
+            padding-bottom: 6px;
         }
 
         .navbar-brand {
@@ -75,9 +85,10 @@
         }
 
         .navbar-brand img {
-            width: 42px;
-            height: 42px;
+            width: 44px;
+            height: 44px;
             object-fit: contain;
+            filter: drop-shadow(0 4px 10px rgba(15, 23, 42, .12));
         }
 
         .nav-link {
@@ -85,50 +96,60 @@
             font-size: 14px;
             font-weight: 700;
             padding: 8px 12px !important;
+            border-radius: 9px;
+            transition: .18s ease;
         }
 
         .nav-link:hover {
-            color: var(--blue);
+            color: var(--blue-dark);
+            background: #f1f5f9;
         }
 
         .btn-login {
-            background: var(--sidebar);
+            background: linear-gradient(135deg, var(--sidebar), var(--sidebar-dark));
             border: 1px solid var(--sidebar);
             color: #ffffff;
-            border-radius: 9px;
+            border-radius: 10px;
             font-size: 13px;
             font-weight: 800;
-            padding: 9px 15px;
+            padding: 10px 16px;
+            box-shadow: 0 8px 18px rgba(38, 49, 60, .18);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: .18s ease;
         }
 
         .btn-login:hover {
-            background: var(--sidebar-dark);
+            background: linear-gradient(135deg, var(--sidebar-dark), #17202a);
             border-color: var(--sidebar-dark);
             color: #ffffff;
+            transform: translateY(-1px);
         }
 
         .hero {
             position: relative;
             background:
-                radial-gradient(circle at top left, rgba(47, 159, 179, .22), transparent 35%),
-                linear-gradient(135deg, #26313c, #202932);
+                radial-gradient(circle at 18% 20%, rgba(47, 159, 179, .34), transparent 28%),
+                radial-gradient(circle at 86% 16%, rgba(255, 255, 255, .11), transparent 24%),
+                linear-gradient(135deg, #26313c 0%, #202932 52%, #17202a 100%);
             color: #ffffff;
-            padding: 76px 0;
+            padding: 72px 0 66px;
             overflow: hidden;
         }
 
         .hero::before {
             content: "";
             position: absolute;
-            top: 50%;
-            right: 7%;
-            width: 440px;
-            height: 440px;
+            top: 48%;
+            right: 5%;
+            width: 520px;
+            height: 520px;
             background-image: url("<?= base_url('logo_pkk_transparan.png'); ?>");
             background-repeat: no-repeat;
             background-size: contain;
             background-position: center;
-            opacity: .028;
+            opacity: .035;
             transform: translateY(-50%) rotate(-8deg);
             pointer-events: none;
         }
@@ -136,10 +157,10 @@
         .hero::after {
             content: "";
             position: absolute;
-            left: -120px;
-            bottom: -160px;
-            width: 340px;
-            height: 340px;
+            left: -130px;
+            bottom: -180px;
+            width: 380px;
+            height: 380px;
             background-image: url("<?= base_url('logo_pkk_transparan.png'); ?>");
             background-repeat: no-repeat;
             background-size: contain;
@@ -157,28 +178,29 @@
             display: inline-flex;
             align-items: center;
             gap: 7px;
-            padding: 7px 11px;
+            padding: 8px 12px;
             margin-bottom: 18px;
             border-radius: 999px;
-            background: rgba(255,255,255,.10);
-            border: 1px solid rgba(255,255,255,.18);
-            color: rgba(255,255,255,.92);
+            background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.20);
+            color: rgba(255,255,255,.94);
             font-size: 12px;
             font-weight: 800;
+            box-shadow: 0 10px 22px rgba(0,0,0,.08);
         }
 
         .hero h1 {
             margin: 0 0 14px;
-            font-size: 42px;
-            font-weight: 800;
-            line-height: 1.15;
-            letter-spacing: -.5px;
+            font-size: 44px;
+            font-weight: 900;
+            line-height: 1.12;
+            letter-spacing: -.7px;
         }
 
         .hero p {
             max-width: 620px;
             margin: 0 0 24px;
-            color: rgba(255,255,255,.82);
+            color: rgba(255,255,255,.84);
             font-size: 16px;
             line-height: 1.65;
         }
@@ -191,38 +213,42 @@
 
         .btn-hero-primary,
         .btn-hero-outline {
-            border-radius: 10px;
+            border-radius: 12px;
             font-size: 14px;
             font-weight: 800;
-            padding: 12px 17px;
+            padding: 12px 18px;
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
+            transition: .18s ease;
         }
 
         .btn-hero-primary {
             background: #ffffff;
             color: #202932;
             border: 1px solid #ffffff;
+            box-shadow: 0 12px 24px rgba(0,0,0,.16);
         }
 
         .btn-hero-primary:hover {
             background: #eef2f6;
             color: #202932;
             border-color: #eef2f6;
+            transform: translateY(-2px);
         }
 
         .btn-hero-outline {
-            background: transparent;
+            background: rgba(255,255,255,.06);
             color: #ffffff;
-            border: 1px solid rgba(255,255,255,.45);
+            border: 1px solid rgba(255,255,255,.42);
         }
 
         .btn-hero-outline:hover {
-            background: rgba(255,255,255,.10);
+            background: rgba(255,255,255,.13);
             color: #ffffff;
-            border-color: rgba(255,255,255,.72);
+            border-color: rgba(255,255,255,.74);
+            transform: translateY(-2px);
         }
 
         .hero-image-wrap {
@@ -230,33 +256,34 @@
         }
 
         .hero-image-card {
-            background: rgba(255,255,255,.10);
-            border: 1px solid rgba(255,255,255,.16);
-            border-radius: 22px;
-            padding: 14px;
-            box-shadow: 0 24px 60px rgba(0,0,0,.22);
+            background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.18);
+            border-radius: 24px;
+            padding: 12px;
+            box-shadow: 0 24px 60px rgba(0,0,0,.24);
+            backdrop-filter: blur(10px);
         }
 
         .hero-img {
             width: 100%;
             max-height: 390px;
             object-fit: cover;
-            border-radius: 16px;
+            border-radius: 18px;
             display: block;
             background: #ffffff;
         }
 
         .hero-mini-card {
             position: absolute;
-            left: -14px;
-            bottom: 20px;
+            left: -12px;
+            bottom: 18px;
             width: 210px;
-            background: #ffffff;
+            background: rgba(255,255,255,.96);
             color: #111827;
-            border-radius: 14px;
+            border-radius: 16px;
             padding: 13px;
             border: 1px solid var(--border);
-            box-shadow: 0 16px 35px rgba(15, 23, 42, .20);
+            box-shadow: 0 18px 38px rgba(15, 23, 42, .22);
         }
 
         .hero-mini-card-title {
@@ -272,25 +299,27 @@
         }
 
         .section {
-            padding: 62px 0;
+            padding: 48px 0;
+            position: relative;
         }
 
-        .section-white {
-            background: #ffffff;
+        .row.g-4 {
+            --bs-gutter-x: 14px;
+            --bs-gutter-y: 14px;
         }
 
         .section-title {
             max-width: 760px;
-            margin: 0 auto 32px;
+            margin: 0 auto 24px;
             text-align: center;
         }
 
         .section-title h2 {
             margin: 0 0 10px;
             font-size: 30px;
-            font-weight: 800;
+            font-weight: 900;
             color: #071426;
-            letter-spacing: -.3px;
+            letter-spacing: -.4px;
         }
 
         .section-title p {
@@ -300,141 +329,180 @@
             line-height: 1.6;
         }
 
+        .section-white {
+            background: #ffffff;
+            position: relative;
+            overflow: visible;
+            z-index: 1;
+        }
+
+        .section-white::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 880px;
+            height: 880px;
+            background-image: url("<?= base_url('logo_pkk_transparan.png'); ?>");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            opacity: .028;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .section-white .container {
+            position: relative;
+            z-index: 2;
+        }
+
         .feature-card,
         .step-card,
         .benefit-card {
             height: 100%;
-            background: var(--surface);
+            background: rgba(255,255,255,.96);
             border: 1px solid var(--border);
-            border-radius: 14px;
-            box-shadow: 0 2px 8px rgba(15, 23, 42, .045);
-            transition: .18s ease;
+            border-radius: 16px;
+            box-shadow: 0 5px 16px rgba(15, 23, 42, .055);
+            transition: .2s ease;
         }
 
         .feature-card:hover,
         .step-card:hover,
         .benefit-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 22px rgba(15, 23, 42, .10);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px rgba(15, 23, 42, .12);
+            border-color: rgba(47, 159, 179, .28);
         }
 
         .feature-card {
-            padding: 20px;
+            padding: 18px;
         }
 
         .feature-icon {
-            width: 46px;
-            height: 46px;
-            border-radius: 12px;
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
             font-size: 22px;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,.45);
         }
 
         .feature-icon.blue {
-            background: #eff6ff;
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
             color: #2563eb;
             border: 1px solid #bfdbfe;
         }
 
         .feature-icon.green {
-            background: #ecfdf5;
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
             color: #047857;
             border: 1px solid #bbf7d0;
         }
 
         .feature-icon.red {
-            background: #fff1f2;
+            background: linear-gradient(135deg, #fff1f2, #ffe4e6);
             color: #dc2626;
             border: 1px solid #fecdd3;
         }
 
         .feature-icon.purple {
-            background: #f5f3ff;
+            background: linear-gradient(135deg, #f5f3ff, #ede9fe);
             color: #7655c7;
             border: 1px solid #ddd6fe;
         }
 
-        .feature-card h5 {
-            margin: 0 0 8px;
-            font-size: 17px;
-            font-weight: 800;
+        .feature-card h5,
+        .benefit-card h5,
+        .step-card h5 {
+            margin: 0 0 7px;
+            font-weight: 900;
             color: #111827;
         }
 
-        .feature-card p {
-            margin: 0;
-            color: #475569;
-            font-size: 13px;
-            line-height: 1.55;
-        }
-
-        .benefit-card {
-            padding: 18px;
-        }
-
-        .benefit-card i {
-            color: var(--blue);
-            font-size: 22px;
-            margin-bottom: 10px;
+        .feature-card h5,
+        .step-card h5 {
+            font-size: 17px;
         }
 
         .benefit-card h5 {
-            margin: 0 0 7px;
             font-size: 16px;
-            font-weight: 800;
-            color: #111827;
         }
 
-        .benefit-card p {
-            margin: 0;
-            color: #475569;
-            font-size: 13px;
-            line-height: 1.55;
-        }
-
-        .step-card {
-            padding: 22px;
-            text-align: center;
-        }
-
-        .step-number {
-            width: 42px;
-            height: 42px;
-            margin: 0 auto 14px;
-            border-radius: 50%;
-            background: var(--sidebar);
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-        }
-
-        .step-card h5 {
-            margin: 0 0 8px;
-            font-size: 17px;
-            font-weight: 800;
-            color: #111827;
-        }
-
+        .feature-card p,
+        .benefit-card p,
         .step-card p {
             margin: 0;
             color: #475569;
             font-size: 13px;
-            line-height: 1.55;
+            line-height: 1.5;
+        }
+
+        .benefit-card {
+            padding: 18px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefit-card::after {
+            content: "";
+            position: absolute;
+            right: -28px;
+            top: -28px;
+            width: 82px;
+            height: 82px;
+            border-radius: 50%;
+            background: rgba(47, 159, 179, .08);
+        }
+
+        .benefit-card i {
+            position: relative;
+            z-index: 2;
+            width: 42px;
+            height: 42px;
+            border-radius: 13px;
+            background: #effafd;
+            color: var(--blue-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 21px;
+            margin-bottom: 10px;
+            border: 1px solid #ccecf2;
+        }
+
+        .step-card {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .step-number {
+            width: 44px;
+            height: 44px;
+            margin: 0 auto 12px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--sidebar), var(--blue-dark));
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            box-shadow: 0 10px 22px rgba(38, 49, 60, .20);
         }
 
         .cta {
             position: relative;
             overflow: hidden;
             background:
-                radial-gradient(circle at top right, rgba(47, 159, 179, .22), transparent 35%),
+                radial-gradient(circle at top right, rgba(47, 159, 179, .28), transparent 35%),
                 linear-gradient(135deg, #26313c, #202932);
             color: #ffffff;
-            padding: 58px 0;
+            padding: 56px 0;
         }
 
         .cta::before {
@@ -442,13 +510,13 @@
             position: absolute;
             left: 50%;
             top: 50%;
-            width: 420px;
-            height: 420px;
+            width: 500px;
+            height: 500px;
             background-image: url("<?= base_url('logo_pkk_transparan.png'); ?>");
             background-repeat: no-repeat;
             background-size: contain;
             background-position: center;
-            opacity: .025;
+            opacity: .028;
             transform: translate(-50%, -50%);
             pointer-events: none;
         }
@@ -461,14 +529,14 @@
         .cta h2 {
             margin: 0 0 10px;
             font-size: 30px;
-            font-weight: 800;
+            font-weight: 900;
             letter-spacing: -.3px;
         }
 
         .cta p {
             max-width: 650px;
             margin: 0 auto 24px;
-            color: rgba(255,255,255,.80);
+            color: rgba(255,255,255,.82);
             font-size: 15px;
             line-height: 1.6;
         }
@@ -494,13 +562,18 @@
                 font-size: 13px;
             }
 
+            .navbar-brand img {
+                width: 40px;
+                height: 40px;
+            }
+
             .hero {
-                padding: 54px 0;
+                padding: 52px 0;
             }
 
             .hero::before {
-                width: 330px;
-                height: 330px;
+                width: 340px;
+                height: 340px;
                 right: -90px;
                 opacity: .025;
             }
@@ -510,7 +583,7 @@
             }
 
             .hero h1 {
-                font-size: 31px;
+                font-size: 32px;
             }
 
             .hero p {
@@ -522,7 +595,7 @@
             }
 
             .hero-image-wrap {
-                margin-top: 30px;
+                margin-top: 28px;
             }
 
             .hero-mini-card {
@@ -532,11 +605,26 @@
             }
 
             .section {
-                padding: 46px 0;
+                padding: 40px 0;
+            }
+
+            .row.g-4 {
+                --bs-gutter-x: 12px;
+                --bs-gutter-y: 12px;
+            }
+
+            .section-title {
+                margin-bottom: 20px;
             }
 
             .section-title h2 {
                 font-size: 24px;
+            }
+
+            .section-white::before {
+                width: 520px;
+                height: 520px;
+                opacity: .026;
             }
 
             .cta h2 {
