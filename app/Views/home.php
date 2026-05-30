@@ -117,6 +117,37 @@
             overflow: hidden;
         }
 
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: 7%;
+            width: 440px;
+            height: 440px;
+            background-image: url("<?= base_url('logo_pkk_transparan.png'); ?>");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            opacity: .028;
+            transform: translateY(-50%) rotate(-8deg);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            left: -120px;
+            bottom: -160px;
+            width: 340px;
+            height: 340px;
+            background-image: url("<?= base_url('logo_pkk_transparan.png'); ?>");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            opacity: .025;
+            pointer-events: none;
+        }
+
         .hero .container {
             position: relative;
             z-index: 2;
@@ -240,40 +271,12 @@
             line-height: 1.45;
         }
 
-        .white-logo-area {
-            position: relative;
-            background: #ffffff;
-            overflow: hidden;
-        }
-
-        .white-logo-area::before {
-            content: "";
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            width: 780px;
-            height: 780px;
-            background-image: url("<?= base_url('logo_pkk_transparan.png'); ?>");
-            background-repeat: no-repeat;
-            background-size: contain;
-            background-position: center;
-            opacity: .025;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-        }
-
-        .white-logo-area .container {
-            position: relative;
-            z-index: 2;
-        }
-
         .section {
             padding: 62px 0;
-            position: relative;
         }
 
         .section-white {
-            background: transparent;
+            background: #ffffff;
         }
 
         .section-title {
@@ -322,7 +325,7 @@
         .feature-icon {
             width: 46px;
             height: 46px;
-            border-radius: 12x;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -425,11 +428,34 @@
         }
 
         .cta {
+            position: relative;
+            overflow: hidden;
             background:
                 radial-gradient(circle at top right, rgba(47, 159, 179, .22), transparent 35%),
                 linear-gradient(135deg, #26313c, #202932);
             color: #ffffff;
             padding: 58px 0;
+        }
+
+        .cta::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 420px;
+            height: 420px;
+            background-image: url("<?= base_url('logo_pkk_transparan.png'); ?>");
+            background-repeat: no-repeat;
+            background-size: contain;
+            background-position: center;
+            opacity: .025;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .cta .container {
+            position: relative;
+            z-index: 2;
         }
 
         .cta h2 {
@@ -472,6 +498,17 @@
                 padding: 54px 0;
             }
 
+            .hero::before {
+                width: 330px;
+                height: 330px;
+                right: -90px;
+                opacity: .025;
+            }
+
+            .hero::after {
+                display: none;
+            }
+
             .hero h1 {
                 font-size: 31px;
             }
@@ -492,12 +529,6 @@
                 position: static;
                 width: 100%;
                 margin-top: 12px;
-            }
-
-            .white-logo-area::before {
-                width: 430px;
-                height: 430px;
-                opacity: .045;
             }
 
             .section {
@@ -610,156 +641,152 @@
         </div>
     </header>
 
-    <div class="white-logo-area">
+    <section id="fitur" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Modul Utama Sistem Informasi PKK</h2>
+                <p>
+                    Empat modul utama disiapkan untuk membantu pengelolaan data warga desa secara lebih terstruktur.
+                </p>
+            </div>
 
-        <section id="fitur" class="section section-white">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Modul Utama Sistem Informasi PKK</h2>
-                    <p>
-                        Empat modul utama disiapkan untuk membantu pengelolaan data warga desa secara lebih terstruktur.
-                    </p>
+            <div class="row g-4">
+                <div class="col-12 col-md-6 col-xl-3">
+                    <div class="feature-card">
+                        <div class="feature-icon blue">
+                            <i class="bi bi-people-fill"></i>
+                        </div>
+                        <h5>Data Penduduk</h5>
+                        <p>
+                            Mengelola biodata warga, NIK, No. KK, RT, pendidikan, pekerjaan, dan status pernikahan.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="row g-4">
-                    <div class="col-12 col-md-6 col-xl-3">
-                        <div class="feature-card">
-                            <div class="feature-icon blue">
-                                <i class="bi bi-people-fill"></i>
-                            </div>
-                            <h5>Data Penduduk</h5>
-                            <p>
-                                Mengelola biodata warga, NIK, No. KK, RT, pendidikan, pekerjaan, dan status pernikahan.
-                            </p>
+                <div class="col-12 col-md-6 col-xl-3">
+                    <div class="feature-card">
+                        <div class="feature-icon green">
+                            <i class="bi bi-person-plus-fill"></i>
                         </div>
+                        <h5>Data Kelahiran</h5>
+                        <p>
+                            Mencatat data kelahiran anak, nama ibu, tempat lahir, tanggal lahir, dan usia bayi.
+                        </p>
                     </div>
+                </div>
 
-                    <div class="col-12 col-md-6 col-xl-3">
-                        <div class="feature-card">
-                            <div class="feature-icon green">
-                                <i class="bi bi-person-plus-fill"></i>
-                            </div>
-                            <h5>Data Kelahiran</h5>
-                            <p>
-                                Mencatat data kelahiran anak, nama ibu, tempat lahir, tanggal lahir, dan usia bayi.
-                            </p>
+                <div class="col-12 col-md-6 col-xl-3">
+                    <div class="feature-card">
+                        <div class="feature-icon red">
+                            <i class="bi bi-file-earmark-medical-fill"></i>
                         </div>
+                        <h5>Data Kematian</h5>
+                        <p>
+                            Mengelola laporan kematian warga, tanggal wafat, tempat wafat, dan keterangan pendukung.
+                        </p>
                     </div>
+                </div>
 
-                    <div class="col-12 col-md-6 col-xl-3">
-                        <div class="feature-card">
-                            <div class="feature-icon red">
-                                <i class="bi bi-file-earmark-medical-fill"></i>
-                            </div>
-                            <h5>Data Kematian</h5>
-                            <p>
-                                Mengelola laporan kematian warga, tanggal wafat, tempat wafat, dan keterangan pendukung.
-                            </p>
+                <div class="col-12 col-md-6 col-xl-3">
+                    <div class="feature-card">
+                        <div class="feature-icon purple">
+                            <i class="bi bi-person-standing"></i>
                         </div>
-                    </div>
-
-                    <div class="col-12 col-md-6 col-xl-3">
-                        <div class="feature-card">
-                            <div class="feature-icon purple">
-                                <i class="bi bi-person-standing"></i>
-                            </div>
-                            <h5>Data Lansia</h5>
-                            <p>
-                                Memantau data lansia, umur, hobi, produktivitas, dan catatan pemantauan warga lansia.
-                            </p>
-                        </div>
+                        <h5>Data Lansia</h5>
+                        <p>
+                            Memantau data lansia, umur, hobi, produktivitas, dan catatan pemantauan warga lansia.
+                        </p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="manfaat" class="section section-white">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Manfaat untuk Pengelolaan Data PKK</h2>
-                    <p>
-                        Sistem ini membantu data PKK lebih mudah dicatat, dicari, direkap, dan digunakan untuk kebutuhan laporan.
-                    </p>
+    <section id="manfaat" class="section section-white">
+        <div class="container">
+            <div class="section-title">
+                <h2>Manfaat untuk Pengelolaan Data PKK</h2>
+                <p>
+                    Sistem ini membantu data PKK lebih mudah dicatat, dicari, direkap, dan digunakan untuk kebutuhan laporan.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-12 col-md-4">
+                    <div class="benefit-card">
+                        <i class="bi bi-folder-check"></i>
+                        <h5>Data Lebih Rapi</h5>
+                        <p>
+                            Setiap data tersimpan berdasarkan modul sehingga lebih mudah ditemukan dan diperbarui.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="row g-4">
-                    <div class="col-12 col-md-4">
-                        <div class="benefit-card">
-                            <i class="bi bi-folder-check"></i>
-                            <h5>Data Lebih Rapi</h5>
-                            <p>
-                                Setiap data tersimpan berdasarkan modul sehingga lebih mudah ditemukan dan diperbarui.
-                            </p>
-                        </div>
+                <div class="col-12 col-md-4">
+                    <div class="benefit-card">
+                        <i class="bi bi-bar-chart-line"></i>
+                        <h5>Ringkasan Mudah Dibaca</h5>
+                        <p>
+                            Dashboard menampilkan ringkasan data utama agar kondisi wilayah cepat dipantau.
+                        </p>
                     </div>
+                </div>
 
-                    <div class="col-12 col-md-4">
-                        <div class="benefit-card">
-                            <i class="bi bi-bar-chart-line"></i>
-                            <h5>Ringkasan Mudah Dibaca</h5>
-                            <p>
-                                Dashboard menampilkan ringkasan data utama agar kondisi wilayah cepat dipantau.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4">
-                        <div class="benefit-card">
-                            <i class="bi bi-file-earmark-excel"></i>
-                            <h5>Siap Direkap</h5>
-                            <p>
-                                Data dapat diunduh dalam format Excel untuk kebutuhan arsip dan pelaporan.
-                            </p>
-                        </div>
+                <div class="col-12 col-md-4">
+                    <div class="benefit-card">
+                        <i class="bi bi-file-earmark-excel"></i>
+                        <h5>Siap Direkap</h5>
+                        <p>
+                            Data dapat diunduh dalam format Excel untuk kebutuhan arsip dan pelaporan.
+                        </p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="alur" class="section section-white">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Tiga Langkah Mulai Mengelola Data</h2>
-                    <p>
-                        Pengguna dapat membuat akun, menunggu verifikasi, lalu mulai mengelola data sesuai wilayah.
-                    </p>
+    <section id="alur" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tiga Langkah Mulai Mengelola Data</h2>
+                <p>
+                    Pengguna dapat membuat akun, menunggu verifikasi, lalu mulai mengelola data sesuai wilayah.
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-12 col-md-4">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h5>Daftar Akun PKK</h5>
+                        <p>
+                            Isi data akun dan pilih wilayah desa untuk mengajukan akses ke sistem.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="row g-4">
-                    <div class="col-12 col-md-4">
-                        <div class="step-card">
-                            <div class="step-number">1</div>
-                            <h5>Daftar Akun PKK</h5>
-                            <p>
-                                Isi data akun dan pilih wilayah desa untuk mengajukan akses ke sistem.
-                            </p>
-                        </div>
+                <div class="col-12 col-md-4">
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h5>Verifikasi Admin</h5>
+                        <p>
+                            Admin memeriksa akun yang diajukan sebelum pengguna dapat mengakses sistem.
+                        </p>
                     </div>
+                </div>
 
-                    <div class="col-12 col-md-4">
-                        <div class="step-card">
-                            <div class="step-number">2</div>
-                            <h5>Verifikasi Admin</h5>
-                            <p>
-                                Admin memeriksa akun yang diajukan sebelum pengguna dapat mengakses sistem.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-4">
-                        <div class="step-card">
-                            <div class="step-number">3</div>
-                            <h5>Kelola Data PKK</h5>
-                            <p>
-                                Pengguna dapat mengelola data, melihat dashboard, dan mengunduh rekap Excel.
-                            </p>
-                        </div>
+                <div class="col-12 col-md-4">
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h5>Kelola Data PKK</h5>
+                        <p>
+                            Pengguna dapat mengelola data, melihat dashboard, dan mengunduh rekap Excel.
+                        </p>
                     </div>
                 </div>
             </div>
-        </section>
-
-    </div>
+        </div>
+    </section>
 
     <section class="cta text-center">
         <div class="container">
