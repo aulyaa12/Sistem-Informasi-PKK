@@ -169,7 +169,7 @@
             border-radius: 18px;
             border: 1.5px solid #bfd0e4;
             background: #ffffff;
-            color: #1d4f8c;
+            color: #2563eb;
             font-size: 1.03rem;
             font-weight: 700;
             text-decoration: none;

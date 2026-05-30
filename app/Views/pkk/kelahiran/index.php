@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= esc($title ?? 'Data Kelahiran'); ?> | Sistem PKK Desa</title>
+    <title><?= esc($title ?? 'Data Kelahiran'); ?> | Sistem Informasi PKK</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
@@ -16,7 +16,8 @@
             --surface: #ffffff;
             --border: #dfe5ec;
             --text: #111827;
-            --muted: #6b7280;
+            --muted: #334155;
+            --soft-muted: #64748b;
 
             --blue: #2f9fb3;
             --green: #36a852;
@@ -28,12 +29,17 @@
             box-sizing: border-box;
         }
 
+        html,
+        body {
+            min-height: 100%;
+        }
+
         body {
             margin: 0;
             background: var(--bg);
             color: var(--text);
             font-family: Arial, Helvetica, sans-serif;
-            font-size: 14px;
+            font-size: 15px;
         }
 
         .layout {
@@ -43,23 +49,29 @@
 
         .sidebar {
             width: 245px;
+            height: 100vh;
             background: var(--sidebar);
             color: #ffffff;
-            flex-shrink: 0;
             position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
+            inset: 0 auto 0 0;
             overflow-y: auto;
+            overflow-x: hidden;
+            flex-shrink: 0;
+            z-index: 1000;
+        }
+
+        .content {
+            margin-left: 245px;
+            width: calc(100% - 245px);
+            min-height: 100vh;
+        }
+
+        .main {
+            padding: 28px;
         }
 
         .brand {
             min-height: 185px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
             padding: 22px 16px 18px;
             background: var(--sidebar-dark);
             border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -69,15 +81,8 @@
         .brand-logo {
             width: 132px;
             height: 120px;
-            border-radius: 0;
-            background: transparent;
-            border: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: visible;
             flex-shrink: 0;
-            box-shadow: none;
         }
 
         .brand-logo img {
@@ -98,32 +103,23 @@
             font-size: 34px;
         }
 
-        .brand-text {
-            width: 100%;
-            line-height: 1.25;
-            margin-top: 2px;
-        }
-
         .brand-title {
-            font-size: 16px;
+            font-size: 13px;
             font-weight: 800;
-            line-height: 1.25;
+            line-height: 2.1;
             letter-spacing: .3px;
             color: #ffffff;
         }
 
         .brand-sub {
             font-size: 11px;
-            color: rgba(255,255,255,.68);
+            color: rgba(255,255,255,.72);
             margin-top: 4px;
         }
 
         .profile {
             padding: 18px;
             border-bottom: 1px solid rgba(255,255,255,0.08);
-            display: flex;
-            align-items: center;
-            gap: 11px;
         }
 
         .profile-avatar {
@@ -131,9 +127,6 @@
             height: 42px;
             border-radius: 50%;
             background: #3b82f6;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             font-size: 20px;
             flex-shrink: 0;
         }
@@ -144,8 +137,6 @@
         }
 
         .profile-role {
-            display: inline-block;
-            margin-top: 4px;
             background: #22c55e;
             color: #ffffff;
             font-size: 10px;
@@ -156,7 +147,7 @@
         .menu-label {
             padding: 18px 18px 8px;
             font-size: 11px;
-            color: rgba(255,255,255,.45);
+            color: rgba(255,255,255,.50);
             text-transform: uppercase;
             letter-spacing: .6px;
         }
@@ -165,38 +156,25 @@
             padding: 0 10px 18px;
         }
 
-        .menu a {
-            color: rgba(255,255,255,.78);
+        .menu-link {
+            color: rgba(255,255,255,.82);
             text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
             padding: 11px 12px;
             border-radius: 6px;
             font-size: 13px;
             transition: .15s ease;
         }
 
-        .menu a:hover,
-        .menu a.active {
+        .menu-link:hover,
+        .menu-link.active {
             background: rgba(255,255,255,.10);
             color: #ffffff;
         }
 
-        .menu i {
+        .menu-link i {
             width: 18px;
             text-align: center;
             font-size: 15px;
-        }
-
-        .content {
-            margin-left: 245px;
-            width: calc(100% - 245px);
-            min-height: 100vh;
-        }
-
-        .main {
-            padding: 28px;
         }
 
         .page-title {
@@ -204,21 +182,25 @@
             justify-content: space-between;
             align-items: flex-start;
             gap: 18px;
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             flex-wrap: wrap;
         }
 
         .page-title h1 {
-            margin: 0 0 6px;
-            font-size: 29px;
-            font-weight: 700;
-            color: #0f172a;
+            margin: 0 0 8px;
+            font-size: 31px;
+            font-weight: 800;
+            color: #071426;
+            letter-spacing: -.35px;
+            line-height: 1.22;
         }
 
         .page-title p {
             margin: 0;
-            color: var(--muted);
+            color: #334155;
             font-size: 14px;
+            line-height: 1.55;
+            max-width: 720px;
         }
 
         .page-actions {
@@ -229,14 +211,16 @@
 
         .btn-main,
         .btn-export {
-            border-radius: 7px;
+            border-radius: 8px;
             font-size: 13px;
-            font-weight: 700;
-            padding: 9px 14px;
+            font-weight: 800;
+            padding: 10px 14px;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 7px;
+            white-space: nowrap;
         }
 
         .btn-main {
@@ -407,7 +391,7 @@
 
         .footer {
             text-align: center;
-            color: var(--muted);
+            color: #475569;
             font-size: 12px;
             padding: 20px;
         }
@@ -427,28 +411,7 @@
                 position: static;
                 width: 100%;
                 height: auto;
-            }
-
-            .brand {
-                min-height: 165px;
-                gap: 7px;
-                padding: 18px 16px 16px;
-            }
-
-            .brand-logo {
-                width: 118px;
-                height: 106px;
-                border-radius: 0;
-                background: transparent;
-                border: none;
-                box-shadow: none;
                 overflow: visible;
-            }
-
-            .brand-logo img {
-                width: 118px;
-                height: 106px;
-                transform: scale(1.05);
             }
 
             .content {
@@ -460,24 +423,23 @@
                 padding: 16px;
             }
 
-            .page-title h1 {
-                font-size: 22px;
+            .brand {
+                min-height: 165px;
+                padding: 18px 16px 16px;
+                gap: 7px;
             }
 
-            .page-actions {
-                width: 100%;
+            .brand-logo,
+            .brand-logo img {
+                width: 118px;
+                height: 106px;
             }
 
-            .btn-main,
-            .btn-export {
-                flex: 1;
-                justify-content: center;
+            .brand-logo img {
+                transform: scale(1.05);
             }
 
-            .profile {
-                display: none;
-            }
-
+            .profile,
             .menu-label {
                 display: none;
             }
@@ -490,9 +452,23 @@
                 border-top: 1px solid rgba(255,255,255,0.08);
             }
 
-            .menu a {
+            .menu-link {
                 white-space: nowrap;
                 flex-shrink: 0;
+            }
+
+            .page-title h1 {
+                font-size: 25px;
+            }
+
+            .page-actions {
+                width: 100%;
+            }
+
+            .btn-main,
+            .btn-export {
+                flex: 1;
+                justify-content: center;
             }
 
             .table {
@@ -518,68 +494,64 @@
 
 <body>
 
+<?php
+    $menus = [
+        ['url' => 'pkk/dashboard', 'icon' => 'bi-speedometer2', 'label' => 'Dashboard', 'active' => false],
+        ['url' => 'pkk/penduduk', 'icon' => 'bi-people-fill', 'label' => 'Data Penduduk', 'active' => false],
+        ['url' => 'pkk/kelahiran', 'icon' => 'bi-person-plus-fill', 'label' => 'Data Kelahiran', 'active' => true],
+        ['url' => 'pkk/kematian', 'icon' => 'bi-file-earmark-medical-fill', 'label' => 'Data Kematian', 'active' => false],
+        ['url' => 'pkk/lansia', 'icon' => 'bi-person-standing', 'label' => 'Data Lansia', 'active' => false],
+        ['url' => 'pkk/laporan', 'icon' => 'bi-clipboard-data-fill', 'label' => 'Laporan Bulanan', 'active' => false],
+    ];
+?>
+
 <div class="layout">
 
     <aside class="sidebar">
-        <div class="brand">
-            <div class="brand-logo">
+        <div class="brand d-flex flex-column align-items-center justify-content-center text-center gap-2">
+            <div class="brand-logo d-flex align-items-center justify-content-center">
                 <img src="/logo_pkk_transparan.png?v=3"
                      alt="Logo PKK"
                      onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+
                 <div class="brand-fallback">
                     <i class="bi bi-flower1"></i>
                 </div>
             </div>
 
-            <div class="brand-text">
-                <div class="brand-title">PKK DESA</div>
-                <div class="brand-sub">Sistem Data Wilayah</div>
+            <div class="w-100">
+                <div class="brand-title">SISTEM INFORMASI PKK</div>
+                <div class="brand-sub">Kemudahan dalam mengelola data PKK</div>
             </div>
         </div>
 
-        <div class="profile">
-            <div class="profile-avatar">
+        <div class="profile d-flex align-items-center gap-2">
+            <div class="profile-avatar d-flex align-items-center justify-content-center">
                 <i class="bi bi-person-fill"></i>
             </div>
+
             <div>
                 <div class="profile-name"><?= esc(session()->get('username') ?? 'Ketua PKK'); ?></div>
-                <span class="profile-role">Ketua PKK</span>
+                <span class="profile-role d-inline-block">Ketua PKK</span>
             </div>
         </div>
 
         <div class="menu-label">Menu Utama</div>
 
         <nav class="menu">
-            <a href="<?= base_url('pkk/dashboard'); ?>">
-                <i class="bi bi-speedometer2"></i>
-                Dashboard
-            </a>
-
-            <a href="<?= base_url('pkk/penduduk'); ?>">
-                <i class="bi bi-people-fill"></i>
-                Data Penduduk
-            </a>
-
-            <a href="<?= base_url('pkk/kelahiran'); ?>" class="active">
-                <i class="bi bi-person-plus-fill"></i>
-                Data Kelahiran
-            </a>
-
-            <a href="<?= base_url('pkk/kematian'); ?>">
-                <i class="bi bi-file-earmark-medical-fill"></i>
-                Data Kematian
-            </a>
-
-            <a href="<?= base_url('pkk/lansia'); ?>">
-                <i class="bi bi-person-standing"></i>
-                Data Lansia
-            </a>
+            <?php foreach ($menus as $menu) : ?>
+                <a href="<?= base_url($menu['url']); ?>"
+                   class="menu-link d-flex align-items-center gap-2 <?= $menu['active'] ? 'active' : ''; ?>">
+                    <i class="bi <?= esc($menu['icon']); ?>"></i>
+                    <?= esc($menu['label']); ?>
+                </a>
+            <?php endforeach; ?>
         </nav>
 
         <div class="menu-label">Akun</div>
 
         <nav class="menu">
-            <a href="<?= base_url('logout'); ?>">
+            <a href="<?= base_url('logout'); ?>" class="menu-link d-flex align-items-center gap-2">
                 <i class="bi bi-box-arrow-right"></i>
                 Logout
             </a>
@@ -604,7 +576,7 @@
             <div class="page-title">
                 <div>
                     <h1>Data Kelahiran</h1>
-                    <p>Kelola pencatatan data kelahiran anak berdasarkan wilayah akun yang sedang login.</p>
+                    <p>Kelola pencatatan data kelahiran anak berdasarkan wilayah akun yang sedang digunakan.</p>
                 </div>
 
                 <div class="page-actions">
@@ -727,7 +699,7 @@
         </main>
 
         <footer class="footer">
-            &copy; <?= date('Y'); ?> Sistem PKK Desa. Data ditampilkan sesuai wilayah akun yang sedang login.
+            &copy; <?= date('Y'); ?> Sistem Informasi PKK. Data ditampilkan sesuai wilayah akun yang sedang login.
         </footer>
     </div>
 

@@ -10,12 +10,17 @@ class KelahiranModel extends Model
     protected $primaryKey       = 'id_kelahiran';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
-    protected $allowedFields    = [
-        'id_desa', 'nik_ibu', 'nama_bayi', 'jenis_kelamin', 
-        'tempat_lahir', 'tgl_lahir'
-    ]; // Kolom 'umur_bulan' terisi otomatis oleh MySQL
 
-    // Timestamps
+    protected $allowedFields    = [
+        'id_desa',
+        'nik_ibu',
+        'nama_bayi',
+        'jenis_kelamin',
+        'tempat_lahir',
+        'tgl_lahir',
+        'keterangan',
+    ];
+
     protected $useTimestamps = true;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';

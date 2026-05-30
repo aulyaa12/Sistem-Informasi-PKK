@@ -71,6 +71,11 @@ $routes->group('pkk', ['filter' => ['isLoggedIn', 'isPkk']], function ($routes) 
     $routes->get('dashboard', 'PkkController::index');
     $routes->get('export-all', 'PkkController::exportAll');
 
+     // Laporan Bulanan PKK
+    $routes->get('laporan', 'LaporanController::index');
+    $routes->get('laporan/export', 'LaporanController::exportExcel');
+
+    
     // ==================================================
     // MODUL PENDUDUK
     // ==================================================
@@ -82,7 +87,6 @@ $routes->group('pkk', ['filter' => ['isLoggedIn', 'isPkk']], function ($routes) 
     $routes->get('penduduk/edit/(:any)', 'PendudukController::edit/$1');
     $routes->post('penduduk/update/(:any)', 'PendudukController::update/$1');
     $routes->get('penduduk/delete/(:any)', 'PendudukController::delete/$1');
-
 
     // ==================================================
     // MODUL KELAHIRAN
@@ -96,7 +100,6 @@ $routes->group('pkk', ['filter' => ['isLoggedIn', 'isPkk']], function ($routes) 
     $routes->post('kelahiran/update/(:any)', 'KelahiranController::update/$1');
     $routes->get('kelahiran/delete/(:any)', 'KelahiranController::delete/$1');
 
-
     // ==================================================
     // MODUL KEMATIAN
     // ==================================================
@@ -107,7 +110,6 @@ $routes->group('pkk', ['filter' => ['isLoggedIn', 'isPkk']], function ($routes) 
     $routes->get('kematian/edit/(:num)', 'KematianController::edit/$1');
     $routes->post('kematian/update/(:num)', 'KematianController::update/$1');
     $routes->get('kematian/delete/(:num)', 'KematianController::delete/$1');
-
 
     // ==================================================
     // MODUL LANSIA
@@ -120,7 +122,6 @@ $routes->group('pkk', ['filter' => ['isLoggedIn', 'isPkk']], function ($routes) 
     $routes->post('lansia/update/(:num)', 'LansiaController::update/$1');
     $routes->get('lansia/delete/(:num)', 'LansiaController::delete/$1');
 
-
     // ==================================================
     // API WILAYAH LAMA UNTUK AREA PKK
     // Ini bukan API untuk pihak luar.
@@ -131,3 +132,53 @@ $routes->group('pkk', ['filter' => ['isLoggedIn', 'isPkk']], function ($routes) 
     $routes->get('api/kecamatan', 'WilayahController::getKecamatan');
     $routes->get('api/desa', 'WilayahController::getDesa');
 });
+
+
+// ======================================================
+// REST API V1
+// Output: JSON
+// Fungsi: CRUD data utama sistem
+// Catatan: route ini sengaja di luar group pkk
+// agar URL-nya menjadi /api/v1/...
+// ======================================================
+$routes->group('api/v1', ['namespace' => 'App\Controllers\Api'], function ($routes) {
+
+        // Statistik Dashboard
+    $routes->get('statistik-dashboard', 'StatistikDashboardApiController::index');
+    
+
+    // Data Penduduk
+    $routes->get('penduduk', 'PendudukApiController::index');
+    $routes->get('penduduk/(:segment)', 'PendudukApiController::show/$1');
+    $routes->post('penduduk', 'PendudukApiController::create');
+    $routes->put('penduduk/(:segment)', 'PendudukApiController::update/$1');
+    $routes->delete('penduduk/(:segment)', 'PendudukApiController::delete/$1');
+
+        // Data Kelahiran
+    $routes->get('kelahiran', 'KelahiranApiController::index');
+    $routes->get('kelahiran/(:num)', 'KelahiranApiController::show/$1');
+    $routes->post('kelahiran', 'KelahiranApiController::create');
+    $routes->put('kelahiran/(:num)', 'KelahiranApiController::update/$1');
+    $routes->delete('kelahiran/(:num)', 'KelahiranApiController::delete/$1');
+
+        // Data Kematian
+    $routes->get('kematian', 'KematianApiController::index');
+    $routes->get('kematian/(:num)', 'KematianApiController::show/$1');
+    $routes->post('kematian', 'KematianApiController::create');
+    $routes->put('kematian/(:num)', 'KematianApiController::update/$1');
+    $routes->delete('kematian/(:num)', 'KematianApiController::delete/$1');
+
+        // Data Lansia
+    $routes->get('lansia', 'LansiaApiController::index');
+    $routes->get('lansia/(:num)', 'LansiaApiController::show/$1');
+    $routes->post('lansia', 'LansiaApiController::create');
+    $routes->put('lansia/(:num)', 'LansiaApiController::update/$1');
+    $routes->delete('lansia/(:num)', 'LansiaApiController::delete/$1');
+});
+
+// ======================================================
+// SOAP WEB SERVICE
+// Output: XML
+// Fungsi: Rekap dan laporan data desa
+// ======================================================
+$routes->match(['get', 'post'], 'soap/rekap-desa', 'SoapRekapController::index');
