@@ -1,4 +1,4 @@
-# Sistem Informasi Data PKK Desa
+# Sistem Informasi PKK 
 
 Sistem Informasi Data PKK Desa adalah aplikasi berbasis web yang dikembangkan untuk membantu proses pengelolaan data PKK desa secara lebih rapi, mudah, dan terstruktur. Aplikasi ini digunakan untuk mencatat, mengelola, memantau, dan merekap data warga desa yang berkaitan dengan kegiatan administrasi PKK.
 
