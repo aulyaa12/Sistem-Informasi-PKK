@@ -711,7 +711,7 @@
             <?php endif; ?>
 
             <div class="page-title">
-                <h1>Sistem Informasi PKK <?= esc($nama_desa ?? 'Desa'); ?></h1>
+                <h1>SISTEM INFORMASI PKK DESA <?= esc($nama_desa ?? 'Desa'); ?></h1>
                 <p>Kelola dan pantau data warga desa secara ringkas melalui fitur penduduk, kelahiran, kematian, dan lansia.</p>
             </div>
 
